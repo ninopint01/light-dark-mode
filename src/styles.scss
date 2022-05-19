@@ -1,0 +1,279 @@
+* {
+    margin: 0;
+    padding: 0;
+    // box-sizing: border-box;
+    font-family: 'Manrope', sans-serif;
+  }
+  
+  :root {
+    --color-brand: #8C30F5;
+    --color-white: #fff;
+    --color-gray-900: #18191F;
+    --color-gray-1: #E5E9F2;
+    --color-gray-2: #ccc;
+    --color-bg: #fff;
+    --button-border-transparent: 2px solid transparent;
+    --button-hover: 2px solid var(--color-brand);
+  }
+  
+  .dark-mode {
+    --color-brand: #8C30F5;
+    --color-white: #fff;
+    --color-gray-900: #FFF;
+    --color-gray-1: #E5E9F2;
+    --color-gray-2: #ccc;
+    --color-bg: #18191F;
+  }
+  
+  body {
+    background-color: var(--color-bg);
+  }
+  
+  
+  // HEADER //
+  
+  .header {
+    height: 72px;
+    max-width: 1440px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .logo {
+        margin-left: 136px;
+    }
+  
+    .nav-item {
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 20px;
+      /* identical to box height, or 111% */
+      font-feature-settings: 'liga' off;
+      /* Text / Gray 900 */
+      color: var(--color-gray-900);
+      padding: 0 16px;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+    
+    .button-container {
+        margin-right: 165px;
+
+        .button-nav {
+        all: unset; // remove default button styling
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 20px;
+        /* identical to box height, or 143% */
+        text-align: center;
+        font-feature-settings: 'liga' off;
+        padding: 10px 16px;
+        border-radius: 8px;
+        color: var(--color-white);
+        background-color: var(--color-brand);
+        border: var(--button-border-transparent);
+    
+            &:hover {
+                color: var(--color-brand);
+                background-color:var(--color-bg);
+                border: var(--button-hover);
+            }
+        }
+    }
+  }
+
+  .divider {
+    border-top: 1px solid var(--color-gray-1);
+  }
+  
+  // HERO //
+  
+  .hero {
+    max-width: 1440px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    // padding-left: 165px;
+    
+    .hero-left {
+        margin-left: 165px;
+      h1 {
+        padding-top: 176px;
+        margin-bottom: 16px;
+        font-weight: 800;
+        font-size: 72px;
+        line-height: 98px;
+        /* or 136% */
+        font-feature-settings: 'liga' off;
+        color: var(--color-gray-900);
+      }
+  
+      .hero-text {
+        font-weight: 400;
+        font-size: 18px;
+        line-height: 32px;
+        /* or 178% */
+        font-feature-settings: 'liga' off;
+        /* Text / Gray 900 */
+        color: var(--color-gray-900);
+        margin-bottom: 32px;
+      }
+  
+      .button-hero {
+        all: unset; // remove default button styling
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 30px;
+        /* identical to box height, or 150% */
+        text-align: center;
+        font-feature-settings: 'liga' off;
+        padding: 16px 35px;
+        border-radius: 8px;
+        color: var(--color-white);
+        background-color: var(--color-brand);
+        border: var(--button-border-transparent);
+        margin-bottom: 32px;
+  
+        &:hover {
+          color: var(--color-brand);
+          background-color:var(--color-bg);
+          border: var(--button-hover);
+        }
+      }
+  
+  
+      // LIGHT / DARK MODE SLIDER
+      .mode-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+  
+        .mode-text {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 24px;
+          /* identical to box height, or 171% */
+          font-feature-settings: 'liga' off;
+          /* Text / Gray 900 */
+          color: var(--color-gray-900);
+        }
+  
+        // Box around the slider
+        .switch {
+          position: relative;
+          display: inline-block;
+          width: 24px;
+          height: 16px;
+          
+          // Hide dafault checkbox
+          input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+          }
+          
+          // Back part
+          .slider-theme {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--color-gray-900);
+            -webkit-transition: .4s;
+            transition: .4s;
+            
+            // Part on top (that will slide)
+            &:before {
+              position: absolute;
+              content: "";
+              height: 12px;
+              width: 12px;
+              left: 2px;
+              bottom: 2px;
+              background-color: var(--color-bg);
+              -webkit-transition: .4s;
+              transition: .4s;
+            }
+            
+            &.round {
+              border-radius: 34px;
+            }
+            &.round:before {
+              border-radius: 50%;
+            }
+          }
+          
+          // Select the first .slider element that is 
+          // placed immediately after <input> element
+          // Back part - toggle color
+          input:checked + .slider-theme {
+            background-color: var(--color-gray-2);
+          }
+          
+          // Slide top part right when checked
+          input:checked + .slider-theme:before {
+            -webkit-transform: translateX(8px);
+            -ms-transform: translateX(8px);
+            transform: translateX(8px);
+          }
+        }
+      }
+    }
+  
+    .hero-right {
+      position: relative;
+      img {
+        position: absolute;
+      }
+  
+      #hero-iphone {
+        left: 235px;
+        top: 96px;
+      }
+  
+      #hero-circle-1 {
+        left: 97px;
+        top: 62px;
+      }
+      
+      #hero-circle-2 {
+        right: 0px;
+        top: 361px;
+      }
+  
+      #hero-circle-3 {
+        left: 381px;
+        top: 722px;
+      }
+  
+      #hero-user-1 {
+        left: 61px;
+        top: 233px;
+      }
+  
+      #hero-user-2 {
+        left: 472px;
+        top: 81px;
+      }
+  
+      #hero-user-3 {
+        left: 149px;
+        top: 519px;
+      }
+  
+      #hero-user-4 {
+        left: 510px;
+        top: 518px;
+      }
+    }
+  }
+  
